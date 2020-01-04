@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlasApp.Web", "AtlasApp\AtlasApp.Web.csproj", "{DA4D5EE2-7C58-4BC3-8AE6-F6874EDB2EE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlasApp.Domain", "AtlasApp.Domain\AtlasApp.Domain.csproj", "{B88C6FB4-3A01-4556-B3B2-BA28B1310761}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA4D5EE2-7C58-4BC3-8AE6-F6874EDB2EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4D5EE2-7C58-4BC3-8AE6-F6874EDB2EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4D5EE2-7C58-4BC3-8AE6-F6874EDB2EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4D5EE2-7C58-4BC3-8AE6-F6874EDB2EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B88C6FB4-3A01-4556-B3B2-BA28B1310761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B88C6FB4-3A01-4556-B3B2-BA28B1310761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B88C6FB4-3A01-4556-B3B2-BA28B1310761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B88C6FB4-3A01-4556-B3B2-BA28B1310761}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6177985-0ABE-41F8-86AB-7B99D33C9667}
+	EndGlobalSection
+EndGlobal

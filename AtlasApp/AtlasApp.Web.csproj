@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>AtlasApp.Web</AssemblyName>
+    <RootNamespace>AtlasApp.Web</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtlasApp.Domain\AtlasApp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
