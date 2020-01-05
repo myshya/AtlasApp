@@ -1,8 +1,10 @@
-﻿using AtlasApp.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using AtlasApp.Domain.Entities;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace AtlasApp.Domain
 {
@@ -11,15 +13,19 @@ namespace AtlasApp.Domain
         private readonly IMongoDatabase _mongoDb;
         public AtlasAppContext()
         {
-            var client = new MongoClient("mongodb+srv://sarathlal:<password>@sarathlal-6k9bj.azure.mongodb.net?retryWrites=true");
-            _mongoDb = client.GetDatabase("SarathDB");
+            var client = new MongoClient("mongodb+srv://OmniApp:<password>@omni-oedlw.azure.mongodb.net/test?retryWrites=true&w=majority");
+            _mongoDb = client.GetDatabase("AtlasApp");
         }
-        public IMongoCollection<Employee> Employee
+        public IMongoCollection<T> DbSet<T>() where T: BaseModel 
         {
-            get
-            {
-                return _mongoDb.GetCollection<Employee>("Employee");
-            }
+            var tableName = GetTableName<T>();
+            return _mongoDb.GetCollection<T>(tableName);
+        }
+
+        public string GetTableName<T>()
+        {
+            var attr = typeof(T).GetCustomAttributes(typeof(TableAttribute), true).FirstOrDefault() as TableAttribute;
+            return attr?.Name;
         }
     }
 }

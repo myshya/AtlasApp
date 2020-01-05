@@ -1,14 +1,12 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AtlasApp.Domain.Entities
 {
-    public class Employee
+    [Table("Employee")]
+    public class Employee : BaseModel
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-
         public string Name { get; set; }
         public string Address { get; set; }
         public string Gender { get; set; }
