@@ -1,12 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AtlasApp.Domain;
+using AtlasApp.Domain.Abstract;
+using AtlasApp.Domain.IRepository;
+using AtlasApp.Domain.Model;
+using AtlasApp.Domain.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace AtlasApp
 {
@@ -22,6 +24,15 @@ namespace AtlasApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DatabaseSettings>(Configuration.GetSection(nameof(DatabaseSettings)));
+            
+            services.AddSingleton<IDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+            services.AddSingleton<AtlasAppContext>();
+            
+            //repositories
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
             services.AddControllersWithViews();
         }
 

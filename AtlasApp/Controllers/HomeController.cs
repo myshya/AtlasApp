@@ -6,21 +6,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AtlasApp.Models;
+using AtlasApp.Domain.Repository;
+using AtlasApp.Domain.Entities;
+using AtlasApp.Domain;
+using AtlasApp.Domain.IRepository;
 
 namespace AtlasApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IEmployeeRepository employeeRepository)
         {
             _logger = logger;
+            _employeeRepository = employeeRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var employees = await _employeeRepository.GetAll();
+
+            return View(employees);
         }
 
         public IActionResult Privacy()

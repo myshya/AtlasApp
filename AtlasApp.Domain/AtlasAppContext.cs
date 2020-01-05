@@ -1,9 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using AtlasApp.Domain.Abstract;
 using AtlasApp.Domain.Entities;
+using AtlasApp.Domain.Model;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace AtlasApp.Domain
@@ -11,12 +10,14 @@ namespace AtlasApp.Domain
     public class AtlasAppContext
     {
         private readonly IMongoDatabase _mongoDb;
-        public AtlasAppContext()
+
+        public AtlasAppContext(IDatabaseSettings databaseSettings)
         {
-            var client = new MongoClient("mongodb+srv://OmniApp:<password>@omni-oedlw.azure.mongodb.net/test?retryWrites=true&w=majority");
-            _mongoDb = client.GetDatabase("AtlasApp");
+            var client = new MongoClient(databaseSettings.ConnectionString);
+            _mongoDb = client.GetDatabase(databaseSettings.Database);
         }
-        public IMongoCollection<T> DbSet<T>() where T: BaseModel 
+
+        public IMongoCollection<T> DbSet<T>() where T : BaseModel
         {
             var tableName = GetTableName<T>();
             return _mongoDb.GetCollection<T>(tableName);
